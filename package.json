@@ -11,7 +11,16 @@
     "fmt:md": "remark . -o; markdownlint-cli2-fix .; textlint --fix .",
     "fix": "yarn fmt; yarn lint",
     "fix:md": "remark . -o > /dev/null 2>&1; remark .;markdownlint-cli2-fix .; textlint --fix .; textlint .",
+    "lint-staged": "lint-staged",
     "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "yarn fix"
+    ],
+    "*.md": [
+      "yarn fix:md"
+    ]
   },
   "dependencies": {
     "next": "12.0.4",
@@ -32,6 +41,7 @@
     "eslint-config-next": "12.0.4",
     "eslint-config-prettier": "^8.3.0",
     "husky": "^7.0.4",
+    "lint-staged": "^12.1.2",
     "markdownlint-cli2": "^0.3.2",
     "prettier": "2.4.1",
     "remark-cli": "^10.0.1",
