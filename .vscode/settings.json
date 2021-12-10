@@ -1,0 +1,16 @@
+{
+  "editor.tabSize": 2,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[markdown]": {
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+  },
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.organizeImports": true
+  },
+  "eslint.enable": true,
+  "eslint.lintTask.enable": true,
+  "vscode-edge-devtools.headless": true,
+  "vscode-edge-devtools.mirrorEdits": true
+}
