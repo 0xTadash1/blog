@@ -1,0 +1,86 @@
+rules:
+  preset-ja-technical-writing:
+    max-kanji-continuous-len:
+      max: 5
+      allow: []
+
+    no-mix-dearu-desumasu:
+      strict: true
+      preferInHeader: である
+      preferInBody: ですます
+      preferInList: である
+
+    # If there is no period at the end, but there is an exclamation mark,
+    # question mark, or parenthesis instead, it will pass.
+    # And (un)ordered list won't be checked in the first place.
+    ja-no-mixed-period:
+      periodMark: '。'
+      allowPeriodMarks: [';', ':']
+      allowEmojiAtEnd: true
+
+    no-double-negative-ja: false
+
+    no-doubled-joshi:
+      allow: [も, か]
+      separatorCharacters: [';', ':', '!', '?', '。']
+
+    no-exclamation-question-mark:
+      allowHalfWidthExclamation: true
+      allowHalfWidthQuestion: true
+
+  # ---
+  # Ja specific
+  # ---
+  '@textlint-ja/no-insert-dropping-sa': true
+  ja-hiragana-keishikimeishi: true
+  ja-hiragana-hojodoushi: true
+  prefer-tari-tari: true
+
+  ja-space-around-code: true
+  no-mixed-zenkaku-and-hankaku-alphabet: true
+
+  # ---
+  # Consistency
+  # ---
+  terminology:
+    defaultTerms: true
+
+  '@proofdict/proofdict':
+    dictURL: 'https://azu.github.io/proof-dictionary/'
+
+  '@textlint-ja/no-synonyms':
+    preferWords: ['エディタ', 'プログラマー']
+    allowAlphabet: false
+    allowNumber: false
+    allowLexeme: false
+
+  use-si-units: true
+
+  # ---
+  # Quality
+  # ---
+  '@textlint-ja/no-filler': true
+  '@textlint-rule/no-duplicate-abbr': true
+  first-sentence-length:
+    max: 45
+
+  # ---
+  # Other
+  # ---
+  date-weekday-mismatch: true
+
+  doubled-spaces: true
+
+  no-dead-link:
+    checkRelative: true
+    baseURI: null
+    retry: 2
+    maxRetryTime: 6 # sec
+    # Don't raise an error if redirect?
+    ignoreRedirects: true
+    # glob
+    ignore:
+      - 'http://127.0.0.1**'
+      - 'http://127.0.0.1*/**'
+      - 'http://localhost**'
+      - 'http://localhost*/**'
