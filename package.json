@@ -6,7 +6,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
+    "lint:md": "remark .; markdownlint-cli2 .; textlint .",
     "fmt": "prettier './**/*.{ts,tsx,json,css,scss}' -w --ignore-path .gitignore",
+    "fmt:md": "remark . -o; markdownlint-cli2-fix .; textlint --fix .",
+    "fix": "yarn fmt; yarn lint",
+    "fix:md": "remark . -o > /dev/null 2>&1; remark .;markdownlint-cli2-fix .; textlint --fix .; textlint .",
     "prepare": "husky install"
   },
   "dependencies": {
