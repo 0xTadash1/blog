@@ -1,0 +1,66 @@
+# When loading presets or configuring rules in other sections,
+# somehow no error occurs but all settings were ignored.
+plugins:
+  # --- Additional Support
+  # YAML Front Matter, GFM
+  # ---
+  # Avoid errors in YAML Front Matter
+  - remark-frontmatter
+  # Support GitHub Flavored Markdown Spec such as Task list and Strikethrough
+  - - remark-gfm
+    # However, single tilde will be escaped rather than modified to double
+    - singleTilde: false
+
+  # --- Lint RUles
+  # Load presets and override some of their settings
+  # ---
+  # <https://github.com/remarkjs/remark-lint/tree/main/packages/remark-preset-lint-consistent#rules>
+  - remark-preset-lint-consistent
+
+  # <https://github.com/remarkjs/remark-lint/tree/main/packages/remark-preset-lint-recommended#rules>
+  - remark-preset-lint-recommended
+  # Allow Checkbox([ ], [x]) or Text truncation('That is [...]')
+  - - remark-lint-no-undefined-references
+    - allow: ['...', '…']
+
+  # <https://github.com/remarkjs/remark-lint/tree/main/packages/remark-preset-lint-markdown-style-guide#rules>
+  - remark-preset-lint-markdown-style-guide
+  # > Warn when the file extension differ from the preferred extension.
+  - [remark-lint-maximum-line-length, 100]
+  # Toggle to disabled
+  - [remark-lint-hard-break-spaces, false]
+  # Characters prohibited at the end of heading
+  - [remark-lint-no-heading-punctuation, ',.;:、。，．；：']
+  - [remark-lint-list-item-indent, space]
+  # Require consistency in the number of blank lines between list items
+  - - remark-lint-list-item-spacing
+    - checkBlanks: true
+  # Use 'plaintext' instead of empty
+  - - remark-lint-fenced-code-flag
+    - flags:
+        - bash
+        - javascript
+        - plaintext
+        - python
+        - shell
+        - markdown
+        - typescript
+
+  # ---
+  # Additional independent rules
+  # ---
+  - [remark-lint-linebreak-style, unix]
+  - - remark-lint-no-missing-blank-lines
+    - exceptTightLists: true
+
+  # --- Formatting
+  # Remark doesn't respect above lint rules when formatting.
+  # Instead, configure this.
+  # ---
+  - - remark-stringify
+    - bullet: '-'
+      bulletOrdered: '.'
+      fences: true
+      incrementListMarker: false
+      listItemIndent: 'one'
+      rule: '-'
